@@ -1,7 +1,6 @@
 $errorColour: #ff3b30;
 
 .feedback {
-    &__form-wrapper {}
     &__form {
         display: flex;
         flex-direction: column;
@@ -12,6 +11,4 @@ $errorColour: #ff3b30;
             margin-top: 1em;
         }
     }
-
-
 }
