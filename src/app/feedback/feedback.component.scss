@@ -1,0 +1,17 @@
+$errorColour: #ff3b30;
+
+.feedback {
+    &__form-wrapper {}
+    &__form {
+        display: flex;
+        flex-direction: column;
+        &__input-error {
+            color: $errorColour;
+        }
+        &__button {
+            margin-top: 1em;
+        }
+    }
+
+
+}

@@ -1,0 +1,116 @@
+<div class="feedback">
+    <h1>Feedback</h1>
+    <div class="feedback__form-wrapper">
+        <form class="feedback__form" [formGroup]="form" (submit)="formSubmitted()">
+            <!--name-->
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Name *" formControlName="name" type="text" />
+                <mat-error
+                    *ngIf="
+                        (form.get('name')?.touched || form.get('name')?.value) &&
+                        form.get('name')?.hasError('pattern') &&
+                        !form.get('name')?.hasError('required')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    Name must not contain numbers
+                </mat-error>
+                <mat-error
+                    *ngIf="(form.get('name')?.touched || form.get('name')?.value) && form.get('name')?.hasError('required')"
+                    class="feedback__form__input-error"
+                >
+                    Name is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        (form.get('name')?.touched || form.get('name')?.value) &&
+                        form.get('name')?.hasError('minlength') &&
+                        !form.get('name')?.hasError('required') &&
+                        !form.get('name')?.hasError('email')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    Name must be {{ minNameCharacters }} characters or more
+                </mat-error>
+            </mat-form-field>
+
+            <!--companyName-->
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Company name *" formControlName="companyName" type="text" />
+                <mat-error
+                    *ngIf="
+                        (form.get('companyName')?.touched || form.get('companyName')?.value) &&
+                        form.get('companyName')?.hasError('required')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    Company name is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!--jobTitle-->
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Job title *" formControlName="jobTitle" type="text" />
+                <mat-error
+                    *ngIf="(form.get('jobTitle')?.touched || form.get('jobTitle')?.value) && form.get('jobTitle')?.hasError('required')"
+                    class="feedback__form__input-error"
+                >
+                    Job title is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!--yearsInRole-->
+            <mat-form-field appearance="fill">
+                <input matInput placeholder="Years in current role *" formControlName="yearsInRole" type="number" />
+                <mat-error
+                    *ngIf="
+                        (form.get('yearsInRole')?.touched || form.get('yearsInRole')?.value) &&
+                        form.get('yearsInRole')?.hasError('min') &&
+                        !form.get('yearsInRole')?.hasError('required')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    Years in current role should be {{ minYearsInRole }} or more
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        (form.get('yearsInRole')?.touched || form.get('yearsInRole')?.value) &&
+                        form.get('yearsInRole')?.hasError('max') &&
+                        !form.get('yearsInRole')?.hasError('required')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    Years in current role should be {{ maxYearsInRole }} or less
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        (form.get('yearsInRole')?.touched || form.get('yearsInRole')?.value) &&
+                        form.get('yearsInRole')?.hasError('required')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    Years in role is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <!--whatDoYouLike-->
+            <mat-form-field appearance="fill">
+                <textarea
+                    matInput
+                    placeholder="What do you like about marketing corp? *"
+                    formControlName="whatDoYouLike"
+                    type="text"
+                ></textarea>
+                <mat-error
+                    *ngIf="
+                        (form.get('whatDoYouLike')?.touched || form.get('whatDoYouLike')?.value) &&
+                        form.get('whatDoYouLike')?.hasError('required')
+                    "
+                    class="feedback__form__input-error"
+                >
+                    What do you like about marketing corp is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <button type="submit" mat-raised-button color="primary" [disabled]="form.invalid" class="feedback__form__button">Submit</button>
+        </form>
+    </div>
+</div>
