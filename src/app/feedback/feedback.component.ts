@@ -38,7 +38,6 @@ export class FeedbackComponent implements OnInit {
     }
 
     public formSubmitted() {
-        console.log('hi')
         this.router.navigateByUrl('/thankyou', {state: {companyName: this.form.value.companyName}} );
     }
 
