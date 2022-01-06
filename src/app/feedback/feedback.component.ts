@@ -45,7 +45,7 @@ export class FeedbackComponent implements OnInit {
     private createForm(demoMode = false): FormGroup {
         const startingValue = demoMode ? this.demoDummyText : '';
         return new FormGroup({
-            name: new FormControl(startingValue, [Validators.minLength(this.minNameCharacters), Validators.pattern(/^[A-Za-z ]+$/)]),
+            name: new FormControl(startingValue, [Validators.required, Validators.minLength(this.minNameCharacters), Validators.pattern(/^[A-Za-z ]+$/)]),
             companyName: new FormControl(startingValue, [Validators.required]),
             jobTitle: new FormControl(startingValue, [Validators.required]),
             yearsInRole: new FormControl(demoMode ? 1 : '', [Validators.required, Validators.min(this.minYearsInRole), Validators.max(this.maxYearsInRole)]),
